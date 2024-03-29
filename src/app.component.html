@@ -1,0 +1,29 @@
+<h1>Service et injection de dépendance</h1>
+
+<hr/>
+
+Houses:
+<ul>
+        <li *ngFor="let h of houses()"
+            [class.selected]="h.name == selectedHouse()?.name"
+            >
+                {{houseLabel(h)}}
+                <button (click)="select(h)">Quotes</button>
+        </li>
+</ul>
+
+<section *ngIf="selectedHouse() as sh">
+        <hr/>
+        Selected House : {{sh.name}}
+        <ul>
+                <li *ngFor="let m of sh.members">
+                        {{m.name}}
+                        <ul>
+                                <li *ngFor="let q of m.quotes">
+                                        {{q}}
+                                </li>
+                        </ul>
+                </li>
+        </ul>
+</section>
+
